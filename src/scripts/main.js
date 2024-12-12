@@ -1,7 +1,7 @@
 'use strict';
 
 let employeesList = [...document.querySelectorAll('li')];
-
+let forget = employeesList;
 const helper = (list) => {
   return list.map((x) => {
     return {
@@ -19,9 +19,21 @@ const sortList = (list) => {
 
 employeesList = sortList(employeesList);
 
-const parentt = document.querySelector('ul');
+const parentOfList = document.querySelector('ul');
 
 parent.innerHTML = '';
-employeesList.forEach((empl) => parentt.appendChild(empl.element));
+employeesList.forEach((empl) => parentOfList.appendChild(empl.element));
 
-// const getEmployees = (list) => {};
+const getEmployees = (list) => {
+  return list.map((developer) => {
+    return {
+      name: developer.textContent,
+      position: developer.dataset.position,
+      salary: developer.dataset.salary,
+      age: developer.dataset.age,
+    };
+  });
+};
+
+forget = getEmployees(forget);
+alert(forget);
